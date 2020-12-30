@@ -11,15 +11,16 @@ namespace BlogVer2
         public int ID { get; set; }
         
         [Required]
-        public DateTime PublishDate { get; set; }
+        public string PublishDate { get; set; }
         
         [Required]
         public string Title { get; set; }
         
+        [Required]
         public ICollection<Tag> Tags{ get; set; }
         
         [Required]
-        public User writer { get; set; }
+        public User Writer { get; set; }
         
         [Required]
         public string BodyText { get; set; } // with HTML tags
