@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BlogVer2.Migrations
 {
-    public partial class posttaguseradd : Migration
+    public partial class addmodels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +14,7 @@ namespace BlogVer2.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    HashOfPassword = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,7 +27,7 @@ namespace BlogVer2.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PublishDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PublishDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     WriterID = table.Column<int>(type: "int", nullable: false),
                     BodyText = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -38,7 +39,7 @@ namespace BlogVer2.Migrations
                         name: "FK_Post_User_WriterID",
                         column: x => x.WriterID,
                         principalTable: "User",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -58,7 +59,7 @@ namespace BlogVer2.Migrations
                         name: "FK_Tag_Post_PostID",
                         column: x => x.PostID,
                         principalTable: "Post",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 

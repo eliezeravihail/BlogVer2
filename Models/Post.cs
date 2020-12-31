@@ -8,10 +8,10 @@ namespace BlogVer2
 {
     public class Post
     {
-        public int ID { get; set; }
+        public int Id{ get; set; }
         
         [Required]
-        public string PublishDate { get; set; }
+        public DateTime PublishDate { get; set; }
         
         [Required]
         public string Title { get; set; }

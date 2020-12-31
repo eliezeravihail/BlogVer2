@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogVer2.Migrations
 {
     [DbContext(typeof(BlogVer2Context))]
-    [Migration("20201230113620_posttaguseradd")]
-    partial class posttaguseradd
+    [Migration("20201231100047_addmodels")]
+    partial class addmodels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace BlogVer2.Migrations
 
             modelBuilder.Entity("BlogVer2.Post", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -32,9 +32,8 @@ namespace BlogVer2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PublishDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("PublishDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -43,7 +42,7 @@ namespace BlogVer2.Migrations
                     b.Property<int>("WriterID")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("WriterID");
 
@@ -52,7 +51,7 @@ namespace BlogVer2.Migrations
 
             modelBuilder.Entity("BlogVer2.Tag", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -65,7 +64,7 @@ namespace BlogVer2.Migrations
                     b.Property<int?>("PostID")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("PostID");
 
@@ -74,21 +73,21 @@ namespace BlogVer2.Migrations
 
             modelBuilder.Entity("BlogVer2.User", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
-
-                    b.Property<string>("HashOfPassword")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.HasKey("ID");
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("User");
                 });

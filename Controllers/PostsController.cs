@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BlogVer2;
 using BlogVer2.Data;
 
-namespace BlogVer2.Models
+namespace BlogVer2.Controllers
 {
     public class PostsController : Controller
     {
@@ -34,7 +34,7 @@ namespace BlogVer2.Models
             }
 
             var post = await _context.Post
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (post == null)
             {
                 return NotFound();
@@ -46,6 +46,8 @@ namespace BlogVer2.Models
         // GET: Posts/Create
         public IActionResult Create()
         {
+            ViewData["users"] = new SelectList(_context.User, "Id", "Name");
+
             return View();
         }
 
@@ -54,7 +56,7 @@ namespace BlogVer2.Models
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,PublishDate,Title,BodyText")] Post post)
+        public async Task<IActionResult> Create([Bind("Id,PublishDate,Title,BodyText")] Post post)
         {
             if (ModelState.IsValid)
             {
@@ -86,9 +88,9 @@ namespace BlogVer2.Models
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,PublishDate,Title,BodyText")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PublishDate,Title,BodyText")] Post post)
         {
-            if (id != post.ID)
+            if (id != post.Id)
             {
                 return NotFound();
             }
@@ -102,7 +104,7 @@ namespace BlogVer2.Models
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PostExists(post.ID))
+                    if (!PostExists(post.Id))
                     {
                         return NotFound();
                     }
@@ -125,7 +127,7 @@ namespace BlogVer2.Models
             }
 
             var post = await _context.Post
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (post == null)
             {
                 return NotFound();
@@ -147,7 +149,7 @@ namespace BlogVer2.Models
 
         private bool PostExists(int id)
         {
-            return _context.Post.Any(e => e.ID == id);
+            return _context.Post.Any(e => e.Id == id);
         }
     }
 }

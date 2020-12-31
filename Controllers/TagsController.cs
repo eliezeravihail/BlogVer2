@@ -34,7 +34,7 @@ namespace BlogVer2.Controllers
             }
 
             var tag = await _context.Tag
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (tag == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace BlogVer2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name")] Tag tag)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Tag tag)
         {
             if (ModelState.IsValid)
             {
@@ -86,9 +86,9 @@ namespace BlogVer2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name")] Tag tag)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Tag tag)
         {
-            if (id != tag.ID)
+            if (id != tag.Id)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace BlogVer2.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TagExists(tag.ID))
+                    if (!TagExists(tag.Id))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace BlogVer2.Controllers
             }
 
             var tag = await _context.Tag
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (tag == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace BlogVer2.Controllers
 
         private bool TagExists(int id)
         {
-            return _context.Tag.Any(e => e.ID == id);
+            return _context.Tag.Any(e => e.Id == id);
         }
     }
 }
