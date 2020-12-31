@@ -46,6 +46,7 @@ namespace BlogVer2.Controllers
         // GET: Posts/Create
         public IActionResult Create()
         {
+           
             ViewData["users"] = new SelectList(_context.User, "Id", "Name");
 
             return View();
@@ -56,7 +57,7 @@ namespace BlogVer2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PublishDate,Title,BodyText")] Post post)
+        public async Task<IActionResult> Create([Bind("Id,PublishDate,Title,Writer,BodyText")] Post post)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +89,7 @@ namespace BlogVer2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PublishDate,Title,BodyText")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PublishDate,Title,Writer,BodyText")] Post post)
         {
             if (id != post.Id)
             {
