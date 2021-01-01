@@ -16,7 +16,6 @@ namespace BlogVer2
         [Required]
         public string Title { get; set; }
         
-        [Required]
         public ICollection<Tag> Tags{ get; set; }
         
         [Required]

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BlogVer2;
 using BlogVer2.Data;
 
 namespace BlogVer2.Controllers
@@ -46,10 +43,7 @@ namespace BlogVer2.Controllers
         // GET: Posts/Create
         public IActionResult Create()
         {
-           
-            ViewData["users"] = new SelectList(_context.User, "Id", "Name");
-
-            return View();
+           return View();
         }
 
         // POST: Posts/Create
@@ -57,8 +51,9 @@ namespace BlogVer2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PublishDate,Title,Writer,BodyText")] Post post)
+        public async Task<IActionResult> Create([Bind("Id,PublishDate,Title,BodyText")] Post post)
         {
+            post.Writer = _context.User.First<User>();
             if (ModelState.IsValid)
             {
                 _context.Add(post);
@@ -83,6 +78,7 @@ namespace BlogVer2.Controllers
             }
             return View(post);
         }
+
 
         // POST: Posts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -151,6 +147,22 @@ namespace BlogVer2.Controllers
         private bool PostExists(int id)
         {
             return _context.Post.Any(e => e.Id == id);
+        }
+
+       
+        // GET: Posts/Delete/5
+        public async Task<IActionResult> Search(string srecher)
+        {
+            var allFinded =_context.Post.Any(e => e.Title.Contains(srecher));
+            return View(allFinded);
+        }
+
+        // POST: Posts/Delete/5
+        [HttpPost, ActionName("Search")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Search(IActionResult posts)
+        {
+            return View();
         }
     }
 }
