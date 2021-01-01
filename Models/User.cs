@@ -8,7 +8,7 @@ namespace BlogVer2
 {
     public class User
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         
         [Required]
         [StringLength(20)]
@@ -17,7 +17,7 @@ namespace BlogVer2
         public ICollection<Post> Posts { get; set; }
               
         [Required]
-        public string HashOfPassword { get; set; }
+        public string Password { get; set; }
 
 
     }

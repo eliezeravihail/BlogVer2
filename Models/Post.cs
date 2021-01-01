@@ -8,7 +8,7 @@ namespace BlogVer2
 {
     public class Post
     {
-        public int ID { get; set; }
+        public int Id{ get; set; }
         
         [Required]
         public DateTime PublishDate { get; set; }
@@ -19,7 +19,7 @@ namespace BlogVer2
         public ICollection<Tag> Tags{ get; set; }
         
         [Required]
-        public User writer { get; set; }
+        public User Writer { get; set; }
         
         [Required]
         public string BodyText { get; set; } // with HTML tags

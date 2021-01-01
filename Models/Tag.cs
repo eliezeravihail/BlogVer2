@@ -8,7 +8,7 @@ namespace BlogVer2
 {
     public class Tag
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         
         [Required]
         [StringLength(20)]
