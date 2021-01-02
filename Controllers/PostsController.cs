@@ -149,20 +149,32 @@ namespace BlogVer2.Controllers
             return _context.Post.Any(e => e.Id == id);
         }
 
-       
+
+        //// GET: Posts/Delete/5
+        //public async Task<IActionResult> Search(string searcher)
+        //{
+        //    var allFinded = from Post in _context.Post select Post;
+
+        //    return View(await allFinded.ToListAsync());
+        //}
+
         // GET: Posts/Delete/5
-        public async Task<IActionResult> Search(string srecher)
+        public async Task<IActionResult> Search()
         {
-            var allFinded =_context.Post.Any(e => e.Title.Contains(srecher));
-            return View(allFinded);
+            return View(_context.Post.ToListAsync());
         }
 
         // POST: Posts/Delete/5
         [HttpPost, ActionName("Search")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Search(IActionResult posts)
+        public async Task<IActionResult> Search(string? search)
         {
-            return View();
+            if (search == null)
+            {
+                search = "";
+            }
+            var allFinded = from Post in _context.Post where Post.Title.Contains(search) select Post;
+            return View(await allFinded.ToListAsync());
         }
     }
 }

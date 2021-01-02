@@ -28,7 +28,7 @@
                             @using (@Html.BeginForm())
                             {
                                 @Html.TextBox("search") 
-                                <input type="submit" value="search" asp-controller="Users" asp-action="Search"/>
+                                <input type="submit" value="search" asp-controller="Posts" asp-action="Search" name="searcher"/>
                             }
                         </li>
                     </ul>
