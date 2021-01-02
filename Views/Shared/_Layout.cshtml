@@ -8,38 +8,39 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
+           
+        
+    <div id="backMain">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BlogVer2</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            @using (@Html.BeginForm())
-                            {
-                                @Html.TextBox("search") 
-                                <input type="submit" value="search" asp-controller="Posts" asp-action="Search" name="searcher"/>
-                            }
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <nav>
+            <a class="inLine" asp-area="" asp-controller="Home" asp-action="Index">בית</a>
+            <span class="inLine">בית</span>
+            <span class="inLine">אודות</span>
+            <div class=toleft></div>
+            <span class="inLine">פוסט חדש</span>
+            <span class="inLine end">צור קשר</span>
         </nav>
+        <div class="menu">
+            <div>ענן תגיות</div>
+            <div>חיפוש</div>
+        </div>
     </header>
+        <div class=line></div>
+        <div id="main">
+            <h1>הבלוג הטכני</h1>
+            <article>
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+        </div>
+        <article></article>
+        <footer>
+            <span class="inLine footnoe">תנאי שימוש</span>
+            <span class="inLine end footnoe">התחבר</span>
+        </footer>
+    </div>
     <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        
     </div>
 
     <footer class="border-top footer text-muted">
@@ -52,4 +53,92 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+</html>
+
+
+
+
+
+@*==============================*@
+
+
+<body>
+    <div id="backMain">
+        @*<br>
+        
+        <div class="menu">
+            <div>ענן תגיות</div>
+            <div>חיפוש</div>
+        </div>
+        <div class=line></div>
+        <div id="main">
+            <article>
+                <h2>ציוד מכני כבד</h2>
+                @using (@Html.BeginForm())
+                {
+                    @Html.TextBox("search")
+                    <input type="submit" value="search" asp-controller="Posts" asp-action="Search" name="searcher" />
+                }
+                <p>
+                    לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר
+                    מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו שעותלשך
+                    וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק.
+
+                    <h3>קולהע צופעט למרקוח</h3>
+
+                <p>
+                    צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו בלוקריה שיצמה ברורק. ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש.
+                    תרבנך וסתעד לכנו סתשם השמה - לתכי מורגם בורק? לתיג ישבעס.
+
+                    הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה
+                    ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק.
+                </p>
+
+                <h3>קולהע צופעט למרקוח</h3>
+
+                <p>
+                    וסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי
+                    מנורך.
+                    נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קונדימנטום קורוס בליקרה, נונסטי קלובר בריקנה סטום, לפריקך תצטריק
+                    לרטי.
+                </p>
+                <h3>קולהע צופעט למרקוח</h3>
+
+                <p>
+                    צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו בלוקריה שיצמה ברורק. ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש.
+                    תרבנך וסתעד לכנו סתשם השמה - לתכי מורגם בורק? לתיג ישבעס.
+
+                    הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה
+                    ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק.
+                </p>
+
+                <h3>קולהע צופעט למרקוח</h3>
+
+                <p>
+                    וסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי
+                    מנורך.
+                    נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קונדימנטום קורוס בליקרה, נונסטי קלובר בריקנה סטום, לפריקך תצטריק
+                    לרטי.
+                </p>
+            </article>
+        </div>
+        <article></article>*@
+        <footer>
+            <span class="inLine footnoe">תנאי שימוש</span>
+            <span class="inLine end footnoe">התחבר</span>
+        </footer>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+</body>
+
 </html>

@@ -149,17 +149,5 @@ namespace BlogVer2.Controllers
         {
             return _context.User.Any(e => e.Id == id);
         }
-
-        // GET: Users/Delete/5
-        public async Task<IActionResult> Search(string? srecher)
-        {
-            var allFinded = _context.User.Any(e => e.Name.Contains(srecher));
-            return View(allFinded);
-        }
-
-        // POST: Users/Delete/5
-        [HttpPost, ActionName("Search")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Search(IActionResult? users) => View(await _context.User.ToListAsync());
     }
 }

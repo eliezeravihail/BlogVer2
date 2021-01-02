@@ -1,71 +1,140 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
+﻿* {
+    box-sizing: border-box;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* =========================================================================
+This pattern is downloaded from www.toptal.com/designers/subtlepatterns/ 
+If you need more, that's where to get'em.
+========================================================================
+*/
+    background-image: url("/Final-Project/images/organic-tiles.png");
+    background-repeat: repeat;
+    background-size: 25%;
+    margin: auto 0;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+
+#backMain {
+    padding: 15px;
+    max-width: 60em;
+    height: 80em;
+    background: rgb(236, 231, 226);
+    margin: 0px auto;
+    padding: 0;
 }
+
+.toleft {
+    display: flex;
+}
+
+nav {
+    height: 30PX;
+    margin: auto;
+    margin-top: 12px;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+footer {
+    margin: auto;
+    max-width: 60em;
+    direction: rtl;
+    background: rgb(236, 231, 226);
+    width: 100%;
+    position: fixed;
+    padding: 0px;
+    z-index: 100;
+    bottom: 0px;
+}
+
+.inLine {
+    float: right;
+    align-content: right;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 700;
+    font-size: 15pt;
+    margin-right: 20px;
+    border-left: 3px solid rgb(61, 2, 2);
+    text-align: center;
+    padding-left: 15px;
+}
+
+.end {
+    border-left: 0;
+    text-shadow: 1em;
+}
+
+.menu {
+    width: 25%;
+    float: left;
+    padding: 15px;
+    height: 1frn;
+}
+
+#main {
+    width: 75%;
+    float: left;
+    border-width: 3px;
+    height: 73.5em;
+    background-color: rgb(250, 246, 240);
+}
+/* TEXT */
+h1 {
+    text-align: center;
+    background-color: rgb(96, 57, 19);
+    align-content: center;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 700;
+    font-size: 50pt;
+    color: white;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+h2 {
+    text-align: center;
+    color: rgb(160, 8, 17);
+    align-content: center;
+    font-family: 'Heebo', sans-serif;
+    font-weight: bold;
+    font-size: 25pt;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    text-align: right;
+    color: rgb(160, 8, 17);
+    align-content: center;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 700;
+    font-size: 12pt;
+    margin-top: 0px;
+}
+
+p {
+    text-align: justify;
+    direction: rtl;
+    color: rgb(0, 0, 0);
+    font-family: 'Heebo', sans-serif;
+    font-weight: 400;
+    font-size: 11pt;
+    margin-top: 0px;
+}
+
+article {
+    padding: 0 80px;
+}
+
+.line {
+    background-color: rgb(96, 57, 19);
+    height: 4px;
+    margin: 0px;
+}
+
+.inLine.footnoe {
+    font-size: 13pt;
+    font-weight: 100;
+    border-width: 2pt;
+} 
