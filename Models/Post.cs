@@ -17,13 +17,9 @@ namespace BlogVer2
         public string Title { get; set; }
         
         public ICollection<Tag> Tags{ get; set; }
-        
-        [Required]
-        public User Writer { get; set; }
-        
+                
         [Required]
         public string BodyText { get; set; } // with HTML tags
-
 
     }
 }

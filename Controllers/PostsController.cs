@@ -53,7 +53,6 @@ namespace BlogVer2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,PublishDate,Title,BodyText")] Post post)
         {
-            post.Writer = _context.User.First<User>();
             if (ModelState.IsValid)
             {
                 _context.Add(post);
@@ -173,7 +172,9 @@ namespace BlogVer2.Controllers
             {
                 search = "";
             }
-            var allFinded = from Post in _context.Post where Post.Title.Contains(search) select Post;
+            var allFinded = from Post in _context.Post where Post.Title.Contains(search) || Post.BodyText.Contains(search) select Post;
+
+
             return View(await allFinded.ToListAsync());
         }
     }
