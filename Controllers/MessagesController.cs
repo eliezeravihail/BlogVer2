@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BlogVer2.Data;
 using BlogVer2.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace BlogVer2.Controllers
 {
@@ -28,6 +29,10 @@ namespace BlogVer2.Controllers
         // GET: Messages/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (HttpContext.Session.GetString("user") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -56,6 +61,10 @@ namespace BlogVer2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,content,mail")] Message message)
         {
+            if (HttpContext.Session.GetString("user") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(message);
@@ -68,6 +77,10 @@ namespace BlogVer2.Controllers
         // GET: Messages/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (HttpContext.Session.GetString("user") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -88,6 +101,10 @@ namespace BlogVer2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,content,mail")] Message message)
         {
+            if (HttpContext.Session.GetString("user") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             if (id != message.Id)
             {
                 return NotFound();
@@ -119,6 +136,10 @@ namespace BlogVer2.Controllers
         // GET: Messages/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (HttpContext.Session.GetString("user") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -139,6 +160,10 @@ namespace BlogVer2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (HttpContext.Session.GetString("user") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             var message = await _context.Message.FindAsync(id);
             _context.Message.Remove(message);
             await _context.SaveChangesAsync();

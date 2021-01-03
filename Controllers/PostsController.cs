@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BlogVer2.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace BlogVer2.Controllers
 {
@@ -25,6 +26,10 @@ namespace BlogVer2.Controllers
         // GET: Posts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (HttpContext.Session.GetString("user") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -43,7 +48,7 @@ namespace BlogVer2.Controllers
         // GET: Posts/Create
         public IActionResult Create()
         {
-           return View();
+            return HttpContext.Session.GetString("user") == null ? RedirectToAction("Login", "Users") : (IActionResult)View();
         }
 
         // POST: Posts/Create
@@ -53,6 +58,10 @@ namespace BlogVer2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,PublishDate,Title,BodyText")] Post post)
         {
+            if (HttpContext.Session.GetString("user") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(post);
@@ -65,6 +74,10 @@ namespace BlogVer2.Controllers
         // GET: Posts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (HttpContext.Session.GetString("user") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -86,6 +99,10 @@ namespace BlogVer2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,PublishDate,Title,Writer,BodyText")] Post post)
         {
+            if (HttpContext.Session.GetString("user") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             if (id != post.Id)
             {
                 return NotFound();
@@ -117,6 +134,10 @@ namespace BlogVer2.Controllers
         // GET: Posts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (HttpContext.Session.GetString("user") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -137,6 +158,10 @@ namespace BlogVer2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (HttpContext.Session.GetString("user") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             var post = await _context.Post.FindAsync(id);
             _context.Post.Remove(post);
             await _context.SaveChangesAsync();

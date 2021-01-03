@@ -39,8 +39,9 @@
         <div id="main" class="p">
             @RenderBody()
         </div>
-        <footer>
-            <span class="p footnoe notinverysmall">התחבר</span>
+        <footer class="searchBox">
+                <a asp-controller="Users" asp-action="Login" class="notinverysmall">התחבר</a><br> 
+                <a asp-controller="Users" asp-action="LogOut" class="notinverysmall">התנתק</a>
         </footer>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
