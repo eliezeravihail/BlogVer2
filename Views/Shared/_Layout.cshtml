@@ -6,8 +6,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="~/css/site.css" />
     <!-- Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap"
           rel="stylesheet">
@@ -18,28 +19,29 @@
     <div id="backMain">
         <br>
         <nav>
-            <a asp-controller="Home" asp-action="Index" class="inLine">בית</a>
-            <span class="inLine">אודות</span>
+            <a asp-controller="Home" asp-action="Index" class="p inLine">בית</a>
+            <a asp-controller="Home" asp-action="About" class="p inLine">אודות</a>
             <div class=toleft></div>
-             <a asp-controller="Posts" asp-action="Create"  class="inLine">פוסט חדש</a>
-            <span class="inLine end">צור קשר</span>
+             <a asp-controller="Posts" asp-action="Create"  class="p inLine">פוסט חדש</a>
+            <a asp-controller="Messages" asp-action="Create" class="p inLine end">צור קשר</a>
         </nav>
         <div class="menu">
-            <div>ענן תגיות</div>
-            <div class="stickyToTop">
-                @using (@Html.BeginForm())
-                {
-                    @Html.TextBox("search")
-                    <input type="submit" value="חיפוש" asp-controller="Posts" asp-action="Search" name="searcher" />
-                }
+            <div class="p">ענן תגיות
+                <div>
+                    @using (@Html.BeginForm())
+                    {
+                        @Html.TextBox("search")
+                        <input type="submit" value="חיפוש" class="p searchBox" asp-controller="Posts" asp-action="Search" name="searcher" />
+                    }
+                </div>
             </div>
         </div>
         <div class=line></div>
-        <div id="main">
+        <div id="main" class="p">
               @RenderBody()
         </div>
         <footer>
-                <span class="inLine end footnoe">התחבר</span>
+                <span class="p inLine end footnoe">התחבר</span>
         </footer>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -1,27 +1,41 @@
 ﻿using BlogVer2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
+using BlogVer2.Data;
+
 
 namespace BlogVer2.Controllers
 {
     public class HomeController : Controller
     {
+        private BlogVer2Context _context;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, BlogVer2Context context)
         {
             _logger = logger;
+            _context = context;
+
         }
 
         public IActionResult Index()
         {
+
+            ViewBag.posts = from Post in _context.Post
+                            orderby Post.PublishDate
+                            select Post;
             return View();
         }
+
+
+
+        public IActionResult About()
+        {
+            return View();
+        }
+
 
         public IActionResult Privacy()
         {
