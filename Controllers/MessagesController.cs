@@ -5,32 +5,28 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BlogVer2;
 using BlogVer2.Data;
+using BlogVer2.Models;
 using Microsoft.AspNetCore.Http;
 
 namespace BlogVer2.Controllers
 {
-    public class UsersController : Controller
+    public class MessagesController : Controller
     {
         private readonly BlogVer2Context _context;
 
-        public UsersController(BlogVer2Context context)
+        public MessagesController(BlogVer2Context context)
         {
             _context = context;
         }
 
-        // GET: Users
+        // GET: Messages
         public async Task<IActionResult> Index()
         {
-            if (HttpContext.Session.GetString("user") == null)
-            {
-                return RedirectToAction("Login", "Users");
-            }
-            return View(await _context.User.ToListAsync());
+            return View(await _context.Message.ToListAsync());
         }
 
-        // GET: Users/Details/5
+        // GET: Messages/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (HttpContext.Session.GetString("user") == null)
@@ -42,32 +38,28 @@ namespace BlogVer2.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
+            var message = await _context.Message
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (user == null)
+            if (message == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(message);
         }
 
-        // GET: Users/Create
+        // GET: Messages/Create
         public IActionResult Create()
         {
-            if (HttpContext.Session.GetString("user") == null)
-            {
-                return RedirectToAction("Login", "Users");
-            }
             return View();
         }
 
-        // POST: Users/Create
+        // POST: Messages/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Password")] User user)
+        public async Task<IActionResult> Create([Bind("Id,content,mail")] Message message)
         {
             if (HttpContext.Session.GetString("user") == null)
             {
@@ -75,14 +67,14 @@ namespace BlogVer2.Controllers
             }
             if (ModelState.IsValid)
             {
-                _context.Add(user);
+                _context.Add(message);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return View("sended");
             }
-            return View(user);
+            return View(message);
         }
 
-        // GET: Users/Edit/5
+        // GET: Messages/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (HttpContext.Session.GetString("user") == null)
@@ -94,26 +86,26 @@ namespace BlogVer2.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User.FindAsync(id);
-            if (user == null)
+            var message = await _context.Message.FindAsync(id);
+            if (message == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(message);
         }
 
-        // POST: Users/Edit/5
+        // POST: Messages/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Password")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,content,mail")] Message message)
         {
             if (HttpContext.Session.GetString("user") == null)
             {
                 return RedirectToAction("Login", "Users");
             }
-            if (id != user.Id)
+            if (id != message.Id)
             {
                 return NotFound();
             }
@@ -122,12 +114,12 @@ namespace BlogVer2.Controllers
             {
                 try
                 {
-                    _context.Update(user);
+                    _context.Update(message);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.Id))
+                    if (!MessageExists(message.Id))
                     {
                         return NotFound();
                     }
@@ -138,10 +130,10 @@ namespace BlogVer2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(message);
         }
 
-        // GET: Users/Delete/5
+        // GET: Messages/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (HttpContext.Session.GetString("user") == null)
@@ -153,17 +145,17 @@ namespace BlogVer2.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
+            var message = await _context.Message
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (user == null)
+            if (message == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(message);
         }
 
-        // POST: Users/Delete/5
+        // POST: Messages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -172,55 +164,15 @@ namespace BlogVer2.Controllers
             {
                 return RedirectToAction("Login", "Users");
             }
-            var user = await _context.User.FindAsync(id);
-            _context.User.Remove(user);
+            var message = await _context.Message.FindAsync(id);
+            _context.Message.Remove(message);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(int id)
+        private bool MessageExists(int id)
         {
-            return _context.User.Any(e => e.Id == id);
+            return _context.Message.Any(e => e.Id == id);
         }
-
-
-
-
-        //////////////////////////
-        // GET: Users/Create
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login([Bind("Id,Name,Password")] User user)
-        {
-            if (ModelState.IsValid)
-            {
-                var validuser = from date in _context.User where (date.Name == user.Name && date.Password == user.Password) select date;
-                if (validuser.Count() > 0)
-                {
-                HttpContext.Session.SetString("user",user.Name);
-                return RedirectToAction("index","Home");
-                }
-            }
-            return RedirectToAction(nameof(Login));
-        }
-        ////////////////////////
-
-
-        //////////////////////////
-        // GET: Users/Create
-        public IActionResult LogOut()
-        {
-            HttpContext.Session.Remove("user");
-            return View();
-        }
-
     }
 }

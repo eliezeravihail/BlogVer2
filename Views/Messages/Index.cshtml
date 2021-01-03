@@ -1,10 +1,10 @@
-﻿@model IEnumerable<BlogVer2.User>
+﻿@model IEnumerable<BlogVer2.Models.Message>
 
 @{
-    ViewData["Title"] = "Search";
+    ViewData["Title"] = "Index";
 }
 
-<h1>Search</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,10 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.content)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Password)
+                @Html.DisplayNameFor(model => model.mail)
             </th>
             <th></th>
         </tr>
@@ -25,10 +25,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.content)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Password)
+                @Html.DisplayFor(modelItem => item.mail)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

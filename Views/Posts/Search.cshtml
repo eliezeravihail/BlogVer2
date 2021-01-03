@@ -4,44 +4,32 @@
     ViewData["Title"] = "Search";
 }
 
-<h1>Search</h1>
+<h1>תוצאות חיפוש</h1>
+<article>
+    @foreach (var item in Model)
+    {
+        <hr>
+        @Html.DisplayFor(modelItem => item.PublishDate)
+        <html>
+        |
+    </html>
+    <a asp-action="Edit" asp-route-id="@item.Id">ערוך</a>
+    <html>
+    |
+</html>
 
-<p>
-    תוצאות חיפוש:
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PublishDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BodyText)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PublishDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BodyText)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+<a asp-action="Details" asp-route-id="@item.Id">ראה פרטים</a>
+<html>
+ |
+</html>
+<a asp-action="Delete" asp-route-id="@item.Id">מחק </a><hr>
+<h3>
+    @Html.DisplayFor(modelItem => item.Title)
+</h3>
+
+@Html.Raw(item.BodyText)
+<br>
 }
-    </tbody>
-</table>
+</article>
+
+

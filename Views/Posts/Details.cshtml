@@ -1,13 +1,12 @@
 ﻿@model BlogVer2.Post
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "מידע על פוסט";
 }
 
-<h1>Details</h1>
+<h1>מידע על פוסט</h1>
 
-<div>
-    <h4>Post</h4>
+<article>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -29,7 +28,7 @@
             @Html.DisplayFor(model => model.BodyText)
         </dd>
     </dl>
-</div>
+</article>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>

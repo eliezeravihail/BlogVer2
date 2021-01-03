@@ -28,6 +28,10 @@ namespace BlogVer2
 
             services.AddDbContext<BlogVer2Context>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("BlogVer2Context")));
+
+
+
+            services.AddSession(options => { options.IdleTimeout = TimeSpan.FromMinutes(1); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +48,7 @@ namespace BlogVer2
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 
@@ -51,7 +56,7 @@ namespace BlogVer2
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Posts}/{action=Index}/{id?}");
+                    pattern: "{controller=home}/{action=Index}/{id?}");
             });
         }
     }
