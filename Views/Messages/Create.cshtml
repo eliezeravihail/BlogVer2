@@ -1,37 +1,35 @@
 ﻿@model BlogVer2.Models.Message
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "צור קשר";
 }
 
-<h1>Create</h1>
+<h1>צור קשר</h1>
 
-<h4>Message</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="content" class="control-label"></label>
-                <input asp-for="content" class="form-control" />
-                <span asp-validation-for="content" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="mail" class="control-label"></label>
-                <input asp-for="mail" class="form-control" />
-                <span asp-validation-for="mail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<article>
+    <div class="newPost">
+        <div>
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="mail" class="control-label"></label>
+                    <input asp-for="mail" class="form-control" />
+                    <span asp-validation-for="mail" class="text-danger"></span>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label asp-for="content" class="control-label"></label>
+                    <textarea asp-for="content" class="form-control" placeholder="הזן כאן את הודעתך"></textarea>
+                    <span asp-validation-for="content" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="שלח" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</article>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

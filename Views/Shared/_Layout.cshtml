@@ -6,13 +6,12 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="~/css/site.css" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" />
+    @RenderSection("Styles", false)
 </head>
 
 <body>
@@ -21,10 +20,10 @@
         <nav class="p">
                 <a class="inLine" asp-controller="Home" asp-action="Index">בית</a>
                 <a class="inLine" asp-controller="Home" asp-action="About">אודות</a>
-                <a class="inLine" asp-controller="Posts" asp-action="Create">פוסט חדש</a>
-                <a class="inLine end" asp-controller="Messages" asp-action="Create">צור קשר</a>
+                <a class="inLine notinverysmall" asp-controller="Posts" asp-action="Create">פוסט חדש</a>
+                <a class="inLine toleft end" asp-controller="Messages" asp-action="Create">צור קשר</a>
         </nav>
-        <div class="menu">
+        <div class="menu notinverysmall">
             <div class="p">
                 ענן תגיות
                 <div class="searchBox">
@@ -41,7 +40,7 @@
             @RenderBody()
         </div>
         <footer>
-            <span class="p inLine end footnoe">התחבר</span>
+            <span class="p footnoe notinverysmall">התחבר</span>
         </footer>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

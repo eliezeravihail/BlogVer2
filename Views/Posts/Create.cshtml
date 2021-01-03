@@ -6,36 +6,36 @@
 
 <h1>פרסם פוסט חדש</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<div>
+    <article class="p newPost">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="PublishDate" class="control-label"></label>
-                <input asp-for="PublishDate" class="form-control" />
-                <span asp-validation-for="PublishDate" class="text-danger"></span>
+            <div asp-validation-summary="ModelOnly"></div>
+            <div>
+                <label asp-for="PublishDate"></label>
+                <input asp-for="PublishDate" />
+                <span asp-validation-for="PublishDate"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+            <br>
+            <div>
+                <label asp-for="Title"></label>
+                <input asp-for="Title" />
+                <span asp-validation-for="Title"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="BodyText" class="control-label"></label>
-                <input asp-for="BodyText" class="form-control" />
-                <span asp-validation-for="BodyText" class="text-danger"></span>
+            <br>
+            <div>
+<textarea asp-for="BodyText" placeholder="הזן כאן את הפוסט"></textarea>
+                <span asp-validation-for="BodyText"></span>
             </div>
-            
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-danger" />
+            <div>
+                <input type="submit" value="צור" class="btn btn-primary" />
             </div>
         </form>
-    </div>
 </div>
 
 <div>
     <a asp-action="Index">חזור לרשימת הפוסטים</a>
 </div>
+</article>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -60,7 +60,7 @@ namespace BlogVer2.Controllers
             {
                 _context.Add(message);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return View("sended");
             }
             return View(message);
         }

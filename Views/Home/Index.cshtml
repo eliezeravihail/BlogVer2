@@ -2,58 +2,35 @@
 @{
     ViewData["Title"] = "דף בית";
 }
-@{ 
-    Post item = Model.ElementAt<Post>(Model.Count<Post>()-1);
-<div class="p">
-<h1>הבלוג הטכני</h1>
-<article>
-    <h2 class="display-4">@item.Title</h2>
-    <p>@item.BodyText</p>
-</article>
-<hr>
-<h3 class="display-4">פוסט ישן</h3>
-<p>תוכן</p>
-<h3 class="display-4">פוסט ישן</h3>
-<p>תוכן</p>
-<h3 class="display-4">פוסט ישן</h3>
-<p>תוכן</p>
-</div>
-    }
+@{
+    if (Model.Count<Post>() > 0)
+    {
 
-@*<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PublishDate)
-            </th>
-            <th>
-                
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BodyText)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PublishDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BodyText)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>*@
+        Post item = Model.ElementAt<Post>(Model.Count<Post>() - 1);
+        <div class="p">
+            <h1>הבלוג הטכני</h1>
+            <h2>@item.Title</h2>
+            <article>
+                <p>@Html.Raw(item.BodyText)</p>
+            </article>
+            <hr>
+            @*///////*@
+            <!--<article>
+                @foreach (var m in Model)
+                {
+                    <h2>@item.Title</h2>
+                    <p>@Html.Raw(m.BodyText)</p>
+                    <hr>
+                    <span>פוסטים ישנים יותר:</span><br>
+                    <h3>
+                        @Html.DisplayFor(modelItem => m.Title)
+                    </h3>
+                    @Html.Raw(item.BodyText)
+                    <br>
+                }
+            </article>-->
+            @*///////*@
+        </div>
+    }
+}
+
