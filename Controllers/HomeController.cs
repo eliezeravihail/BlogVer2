@@ -4,7 +4,8 @@ using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Linq;
 using BlogVer2.Data;
-
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlogVer2.Controllers
 {
@@ -19,14 +20,10 @@ namespace BlogVer2.Controllers
             _context = context;
 
         }
-
-        public IActionResult Index()
+        // GET: Posts
+        public async Task<IActionResult> Index()
         {
-
-            ViewBag.posts = from Post in _context.Post
-                            orderby Post.PublishDate
-                            select Post;
-            return View();
+            return View(await _context.Post.ToListAsync());
         }
 
 

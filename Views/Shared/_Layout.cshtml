@@ -18,30 +18,30 @@
 <body>
     <div id="backMain">
         <br>
-        <nav>
-            <a asp-controller="Home" asp-action="Index" class="p inLine">בית</a>
-            <a asp-controller="Home" asp-action="About" class="p inLine">אודות</a>
-            <div class=toleft></div>
-             <a asp-controller="Posts" asp-action="Create"  class="p inLine">פוסט חדש</a>
-            <a asp-controller="Messages" asp-action="Create" class="p inLine end">צור קשר</a>
+        <nav class="p">
+                <a class="inLine" asp-controller="Home" asp-action="Index">בית</a>
+                <a class="inLine" asp-controller="Home" asp-action="About">אודות</a>
+                <a class="inLine" asp-controller="Posts" asp-action="Create">פוסט חדש</a>
+                <a class="inLine end" asp-controller="Messages" asp-action="Create">צור קשר</a>
         </nav>
         <div class="menu">
-            <div class="p">ענן תגיות
-                <div>
+            <div class="p">
+                ענן תגיות
+                <div class="searchBox">
                     @using (@Html.BeginForm())
                     {
                         @Html.TextBox("search")
-                        <input type="submit" value="חיפוש" class="p searchBox" asp-controller="Posts" asp-action="Search" name="searcher" />
+                        <input  class ="searchBox" type="submit" value="חיפוש" asp-controller="Posts" asp-action="Search" name="searcher" />
                     }
                 </div>
             </div>
         </div>
         <div class=line></div>
         <div id="main" class="p">
-              @RenderBody()
+            @RenderBody()
         </div>
         <footer>
-                <span class="p inLine end footnoe">התחבר</span>
+            <span class="p inLine end footnoe">התחבר</span>
         </footer>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

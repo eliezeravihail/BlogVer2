@@ -1,16 +1,59 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<BlogVer2.Post>
+@{
+    ViewData["Title"] = "דף בית";
 }
-
+@{ 
+    Post item = Model.ElementAt<Post>(Model.Count<Post>()-1);
 <div class="p">
-    <h1 class="display-4">פוסט ראשון</h1>
-    <p>תוכן</p>
-    <h3 class="display-4">פוסט ישן</h3>
-    <p>תוכן</p>
-    <h3 class="display-4">פוסט ישן</h3>
-    <p>תוכן</p>
-    <h3 class="display-4">פוסט ישן</h3>
-    <p>תוכן</p>
+<h1>הבלוג הטכני</h1>
+<article>
+    <h2 class="display-4">@item.Title</h2>
+    <p>@item.BodyText</p>
+</article>
+<hr>
+<h3 class="display-4">פוסט ישן</h3>
+<p>תוכן</p>
+<h3 class="display-4">פוסט ישן</h3>
+<p>תוכן</p>
+<h3 class="display-4">פוסט ישן</h3>
+<p>תוכן</p>
 </div>
+    }
 
-
+@*<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PublishDate)
+            </th>
+            <th>
+                
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BodyText)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublishDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BodyText)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>*@
