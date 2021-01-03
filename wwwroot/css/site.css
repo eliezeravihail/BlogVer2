@@ -8,7 +8,7 @@ This pattern is downloaded from www.toptal.com/designers/subtlepatterns/
 If you need more, that's where to get'em.
 ========================================================================
 */
-    background-image: url("/Final-Project/images/organic-tiles.png");
+    background-image: url("../images/organic-tiles.png");
     background-repeat: repeat;
     background-size: 25%;
     margin: auto 0;
@@ -34,6 +34,11 @@ nav {
     background-color: rgb(255, 255, 255);
     width: 100%;
     margin-bottom: 30px;
+}
+
+.stickyToTop {
+    position: -webkit-sticky;
+    position: sticky;
 }
 
 footer {
@@ -66,14 +71,14 @@ footer {
 }
 
 .menu {
-    width: 25%;
+    width: 20%;
     float: left;
     padding: 15px;
     height: 1frn;
 }
 
 #main {
-    width: 75%;
+    width: 80%;
     float: left;
     border-width: 3px;
     height: 73.5em;
@@ -137,4 +142,4 @@ article {
     font-size: 13pt;
     font-weight: 100;
     border-width: 2pt;
-} 
+}
