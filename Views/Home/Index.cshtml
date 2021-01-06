@@ -6,7 +6,7 @@
     if (Model.Count<Post>() > 0)
     {
 
-        Post item = Model.ElementAt<Post>(Model.Count<Post>() - 1);
+        Post item = Model.Last<Post>();// ElementAt<Post>(Model.Count<Post>() - 1);
         <div class="p">
             <h1>הבלוג הטכני</h1>
             <h2>@item.Title</h2>
@@ -14,23 +14,28 @@
                 <p>@Html.Raw(item.BodyText)</p>
             </article>
             <hr>
-            @*///////*@
-            <!--<article>
-                @foreach (var m in Model)
-                {
-                    <h2>@item.Title</h2>
-                    <p>@Html.Raw(m.BodyText)</p>
                     <hr>
                     <span>פוסטים ישנים יותר:</span><br>
                     <h3>
-                        @Html.DisplayFor(modelItem => m.Title)
-                    </h3>
-                    @Html.Raw(item.BodyText)
-                    <br>
+                
+
+            <article>
+                <div class="row justify-content-between" style="background-color: wheat;height: 100px;">
+                        <div class="col-1" style="border: 1px dotted orange;">
+                        </div>
+
+                @for (int i=0 ; i < Model.Count<Post>() && i<4; i++) 
+                {
+                <div class="col-3" style="border: 1px dotted orange;">
+                    <h3>@item.Title</h3>
+
+                </div>
+                   
                 }
-            </article>-->
-            @*///////*@
-        </div>
+            </article>
+
+            </div>
+
     }
 }
 
