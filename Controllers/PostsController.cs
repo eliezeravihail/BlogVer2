@@ -202,5 +202,32 @@ namespace BlogVer2.Controllers
 
             return View(await allFinded.ToListAsync());
         }
+
+        [HttpPost, ActionName("OldPost")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> OldPot(string? OldPost)
+        {
+
+            int i = _context.Post.Count();
+
+            if (HttpContext.Session.GetString("h") == null)
+            {
+                int z = i;
+                HttpContext.Session.SetString("h", z.ToString());
+            }
+            else
+            {
+                string l = HttpContext.Session.GetString("h");
+                int o = int.Parse(l) - 1;
+                HttpContext.Session.SetString("h", o.ToString());
+
+                var c = _context.Post.Where(p => p.Id == o);
+
+                return View(await c.ToListAsync());
+            }
+            var b = _context.Post.Where(p => p.Id == i - 1);
+
+            return View(await b.ToListAsync());
+        }
     }
 }

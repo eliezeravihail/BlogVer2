@@ -30,7 +30,8 @@
                     @using (@Html.BeginForm())
                     {
                         @Html.TextBox("search")
-                        <input  class ="searchBox" type="submit" value="חיפוש" asp-controller="Posts" asp-action="Search" name="searcher" />
+                        <input class="searchBox" type="submit" value="חיפוש" asp-controller="Posts" asp-action="Search" name="searcher" />
+                        <input class="searchBox" type="submit" value="פוסטים ישנים" asp-controller="Posts" asp-action="OldPost" name="OldPost" />
                     }
                 </div>
             </div>
