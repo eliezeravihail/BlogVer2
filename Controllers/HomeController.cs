@@ -6,6 +6,7 @@ using System.Linq;
 using BlogVer2.Data;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace BlogVer2.Controllers
 {
@@ -23,7 +24,11 @@ namespace BlogVer2.Controllers
         // GET: Posts
         public async Task<IActionResult> Index()
         {
+            // if (HttpContext.Session.GetString("h") != null) ;
+            int i = _context.Post.Count();
+            HttpContext.Session.SetString("h",  i.ToString());
             return View(await _context.Post.ToListAsync());
+
         }
 
 
