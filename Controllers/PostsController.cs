@@ -26,10 +26,14 @@ namespace BlogVer2.Controllers
         // GET: Posts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (HttpContext.Session.GetString("user") == null)
+            if (HttpContext.Session.GetString("user") != null)
             {
-                return RedirectToAction("Login", "Users");
+                ViewData["user"] = "user";
             }
+           // {
+           //     return RedirectToAction("Login", "Users");
+           // }
+           
             if (id == null)
             {
                 return NotFound();
@@ -198,9 +202,12 @@ namespace BlogVer2.Controllers
                 search = "";
             }
             var allFinded = from Post in _context.Post where Post.Title.Contains(search) || Post.BodyText.Contains(search) select Post;
+            if (HttpContext.Session.GetString("user") != null)
+            {
+                ViewData["user"] = "user";
+            }
 
-
-            return View(await allFinded.ToListAsync());
+                return View(await allFinded.ToListAsync());
         }
 
         [HttpPost, ActionName("OldPost")]

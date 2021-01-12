@@ -8,6 +8,8 @@
 <article>
     @foreach (var item in Model)
     {
+        if (ViewData["user"] != null)
+        {
         <hr>
         @Html.DisplayFor(modelItem => item.PublishDate)
         <html>
@@ -22,12 +24,13 @@
 <html>
  |
 </html>
-<a asp-action="Delete" asp-route-id="@item.Id">מחק </a><hr>
+<a asp-action="Delete" asp-route-id="@item.Id">מחק </a><hr>}
 <h3>
-    @Html.DisplayFor(modelItem => item.Title)
+    <a asp-action="Details" asp-route-id="@item.Id">  @Html.DisplayFor(modelItem => item.Title)</a>
+  
 </h3>
 
-@Html.Raw(item.BodyText)
+//@Html.Raw(item.BodyText)
 <br>
 }
 </article>
