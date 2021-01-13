@@ -27,6 +27,10 @@ namespace BlogVer2.Controllers
             {
                 return RedirectToAction("Login", "Users");
             }
+            else
+            {
+                TempData["user"] = "userin";
+            }
             return View(await _context.User.ToListAsync());
         }
 
@@ -36,6 +40,10 @@ namespace BlogVer2.Controllers
             if (HttpContext.Session.GetString("user") == null)
             {
                 return RedirectToAction("Login", "Users");
+            }
+            else
+            {
+                TempData["user"] = "userin";
             }
             if (id == null)
             {
@@ -59,6 +67,10 @@ namespace BlogVer2.Controllers
             {
                 return RedirectToAction("Login", "Users");
             }
+            else
+            {
+                TempData["user"] = "userin";
+            }
             return View();
         }
 
@@ -72,6 +84,10 @@ namespace BlogVer2.Controllers
             if (HttpContext.Session.GetString("user") == null)
             {
                 return RedirectToAction("Login", "Users");
+            }
+            else
+            {
+                TempData["user"] = "userin";
             }
             if (ModelState.IsValid)
             {
@@ -88,6 +104,10 @@ namespace BlogVer2.Controllers
             if (HttpContext.Session.GetString("user") == null)
             {
                 return RedirectToAction("Login", "Users");
+            }
+            else
+            {
+                TempData["user"] = "userin";
             }
             if (id == null)
             {
@@ -112,6 +132,10 @@ namespace BlogVer2.Controllers
             if (HttpContext.Session.GetString("user") == null)
             {
                 return RedirectToAction("Login", "Users");
+            }
+            else
+            {
+                TempData["user"] = "userin";
             }
             if (id != user.Id)
             {
@@ -148,6 +172,10 @@ namespace BlogVer2.Controllers
             {
                 return RedirectToAction("Login", "Users");
             }
+            else
+            {
+                TempData["user"] = "userin";
+            }
             if (id == null)
             {
                 return NotFound();
@@ -171,6 +199,10 @@ namespace BlogVer2.Controllers
             if (HttpContext.Session.GetString("user") == null)
             {
                 return RedirectToAction("Login", "Users");
+            }
+            else
+            {
+                TempData["user"] = "userin";
             }
             var user = await _context.User.FindAsync(id);
             _context.User.Remove(user);
@@ -206,6 +238,7 @@ namespace BlogVer2.Controllers
                 if (validuser.Count() > 0)
                 {
                 HttpContext.Session.SetString("user",user.Name);
+                TempData["user"] = "userin";
                 return RedirectToAction("index","Home");
                 }
             }

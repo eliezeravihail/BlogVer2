@@ -24,7 +24,11 @@ namespace BlogVer2.Controllers
         // GET: Posts
         public async Task<IActionResult> Index()
         {
-            // if (HttpContext.Session.GetString("h") != null) ;
+            if (HttpContext.Session.GetString("user") != null)
+            {
+          
+                TempData["user"] = "userin";
+            }
             int i = _context.Post.Count();
             HttpContext.Session.SetString("h",  i.ToString());
             return View(await _context.Post.ToListAsync());

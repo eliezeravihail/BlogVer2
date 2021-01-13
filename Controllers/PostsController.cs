@@ -66,6 +66,10 @@ namespace BlogVer2.Controllers
             {
                 return RedirectToAction("Login", "Users");
             }
+            else {
+                TempData["user"] = "userin";
+            }
+            
             if (ModelState.IsValid)
             {
                 _context.Add(post);
@@ -81,6 +85,10 @@ namespace BlogVer2.Controllers
             if (HttpContext.Session.GetString("user") == null)
             {
                 return RedirectToAction("Login", "Users");
+            }
+            else
+            {
+                TempData["user"] = "userin";
             }
             if (id == null)
             {
@@ -106,6 +114,10 @@ namespace BlogVer2.Controllers
             if (HttpContext.Session.GetString("user") == null)
             {
                 return RedirectToAction("Login", "Users");
+            }
+            else
+            {
+                TempData["user"] = "userin";
             }
             if (id != post.Id)
             {
@@ -142,6 +154,10 @@ namespace BlogVer2.Controllers
             {
                 return RedirectToAction("Login", "Users");
             }
+            else
+            {
+                TempData["user"] = "userin";
+            }
             if (id == null)
             {
                 return NotFound();
@@ -165,6 +181,10 @@ namespace BlogVer2.Controllers
             if (HttpContext.Session.GetString("user") == null)
             {
                 return RedirectToAction("Login", "Users");
+            }
+            else
+            {
+                TempData["user"] = "userin";
             }
             var post = await _context.Post.FindAsync(id);
             _context.Post.Remove(post);

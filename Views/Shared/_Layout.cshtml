@@ -18,10 +18,14 @@
     <div id="backMain">
         <br>
         <nav class="p">
-                <a class="inLine" asp-controller="Home" asp-action="Index">בית</a>
-                <a class="inLine" asp-controller="Home" asp-action="About">אודות</a>
-                <a class="inLine notinverysmall" asp-controller="Posts" asp-action="Create">פוסט חדש</a>
-                <a class="inLine toleft end" asp-controller="Messages" asp-action="Create">צור קשר</a>
+            <a class="inLine" asp-controller="Home" asp-action="Index">בית</a>
+            <a class="inLine" asp-controller="Home" asp-action="About">אודות</a>
+            
+            @if (TempData["user"] != null)
+            { 
+            <a class="inLine notinverysmall" asp-controller="Posts" asp-action="Create">פוסט חדש</a>
+            }
+            <a class="inLine toleft end" asp-controller="Messages" asp-action="Create">צור קשר</a>
         </nav>
         <div class="menu notinverysmall">
             <div class="p">
@@ -41,9 +45,16 @@
             @RenderBody()
         </div>
         <footer class="searchBox">
-                <a asp-controller="Users" asp-action="Login" class="notinverysmall">התחבר</a><br> 
+
+            @if (TempData["user"] == null)
+            {
+                <a asp-controller="Users" asp-action="Login" class="notinverysmall">התחבר</a><br>
+            }
+            else
+            {
                 <a asp-controller="Users" asp-action="LogOut" class="notinverysmall">התנתק</a>
-        </footer>
+            }
+            </footer>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

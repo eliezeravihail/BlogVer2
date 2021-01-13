@@ -5,29 +5,31 @@
 }
 
 <h1>תוצאות חיפוש</h1>
+<br>
+<br>
 <article>
     @foreach (var item in Model)
     {
         if (ViewData["user"] != null)
         {
-        <hr>
-        @Html.DisplayFor(modelItem => item.PublishDate)
+            <hr>
+            @Html.DisplayFor(modelItem => item.PublishDate)
+            <html>
+            |
+        </html>
+        <a asp-action="Edit" asp-route-id="@item.Id">ערוך</a>
         <html>
         |
     </html>
-    <a asp-action="Edit" asp-route-id="@item.Id">ערוך</a>
+
+    <a asp-action="Details" asp-route-id="@item.Id">ראה פרטים</a>
     <html>
     |
-</html>
-
-<a asp-action="Details" asp-route-id="@item.Id">ראה פרטים</a>
-<html>
- |
 </html>
 <a asp-action="Delete" asp-route-id="@item.Id">מחק </a><hr>}
 <h3>
     <a asp-action="Details" asp-route-id="@item.Id">  @Html.DisplayFor(modelItem => item.Title)</a>
-  
+    <hr>
 </h3>
 
 //@Html.Raw(item.BodyText)
