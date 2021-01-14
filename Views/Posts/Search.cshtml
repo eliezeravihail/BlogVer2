@@ -10,8 +10,10 @@
 <article>
     @foreach (var item in Model)
     {
-        if (ViewData["user"] != null)
+        if (TempData["user"] != null)
         {
+
+          
             <hr>
             @Html.DisplayFor(modelItem => item.PublishDate)
             <html>

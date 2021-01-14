@@ -20,6 +20,12 @@ namespace BlogVer2.Controllers
         // GET: Posts
         public async Task<IActionResult> Index()
         {
+
+            if (HttpContext.Session.GetString("user") != null)
+            {
+
+                TempData["user"] = "userin";
+            }
             return View(await _context.Post.ToListAsync());
         }
 
@@ -28,12 +34,13 @@ namespace BlogVer2.Controllers
         {
             if (HttpContext.Session.GetString("user") != null)
             {
-                ViewData["user"] = "user";
+
+                TempData["user"] = "userin";
             }
-           // {
-           //     return RedirectToAction("Login", "Users");
-           // }
-           
+            // {
+            //     return RedirectToAction("Login", "Users");
+            // }
+
             if (id == null)
             {
                 return NotFound();
@@ -52,6 +59,12 @@ namespace BlogVer2.Controllers
         // GET: Posts/Create
         public IActionResult Create()
         {
+
+            if (HttpContext.Session.GetString("user") != null)
+            {
+
+                TempData["user"] = "userin";
+            }
             return HttpContext.Session.GetString("user") == null ? RedirectToAction("Login", "Users") : (IActionResult)View();
         }
 
@@ -222,18 +235,26 @@ namespace BlogVer2.Controllers
                 search = "";
             }
             var allFinded = from Post in _context.Post where Post.Title.Contains(search) || Post.BodyText.Contains(search) select Post;
+
             if (HttpContext.Session.GetString("user") != null)
             {
-                ViewData["user"] = "user";
+
+                TempData["user"] = "userin";
             }
 
-                return View(await allFinded.ToListAsync());
+            return View(await allFinded.ToListAsync());
         }
 
         [HttpPost, ActionName("OldPost")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> OldPot(string? OldPost)
+        public async Task<IActionResult> OldPot(string OldPost)
         {
+
+            if (HttpContext.Session.GetString("user") != null)
+            {
+
+                TempData["user"] = "userin";
+            }
 
             int i = _context.Post.Count();
 
@@ -253,7 +274,7 @@ namespace BlogVer2.Controllers
                 return View(await c.ToListAsync());
             }
             var b = _context.Post.Where(p => p.Id == i - 1);
-
+        //    return RedirectToAction("Post", "Detailse");
             return View(await b.ToListAsync());
         }
     }

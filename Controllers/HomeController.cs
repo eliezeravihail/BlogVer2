@@ -39,12 +39,24 @@ namespace BlogVer2.Controllers
 
         public IActionResult About()
         {
+
+            if (HttpContext.Session.GetString("user") != null)
+            {
+
+                TempData["user"] = "userin";
+            }
             return View();
         }
 
 
         public IActionResult Privacy()
         {
+
+            if (HttpContext.Session.GetString("user") != null)
+            {
+
+                TempData["user"] = "userin";
+            }
             return View();
         }
         

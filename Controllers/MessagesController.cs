@@ -51,6 +51,12 @@ namespace BlogVer2.Controllers
         // GET: Messages/Create
         public IActionResult Create()
         {
+
+            if (HttpContext.Session.GetString("user") != null)
+            {
+
+                TempData["user"] = "userin";
+            }
             return View();
         }
 
