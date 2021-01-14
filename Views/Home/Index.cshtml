@@ -20,21 +20,28 @@
                 
 
             <article>
-                <div class="row justify-content-between" style="background-color: wheat;height: 100px;">
-                        <div class="col-1" style="border: 1px dotted orange;">
+                <div class="row justify-content-between" style="background-color: transparent;height: 60px;">
+                    <div class="col-1 text-center" style="border: 1px dotted orange;">
+                        next
+                    </div>
+
+                    @*/כאן יש להכניס את התוצאה של הכפתור פוסטים ישנים של ר' יואל/*@
+                    @*/for (int i = 0; i < Model.Count<Post>() && i < 3; i++)/*@
+                    @foreach (var post in Model.Take(3))
+                    {
+                        <div class="col-3" style="border: 1px dotted orange;">
+                            <h3 style="overflow: hidden;">@post.Title</h3>
+                            <h6 style="overflow: hidden;">@post.BodyText</h6>
                         </div>
 
-               @*/כאן יש להכניס את התוצאה של הכפתור פוסטים ישנים של ר' יואל/*@
-                   @for (int i=0 ; i < Model.Count<Post>()-1 && i<4; i++) 
-                {
-                <div class="col-3" style="border: 1px dotted orange;">
-                  
 
+                    }
+                    <div class="col-1 text-center" style="border: 1px dotted orange;">
+                        back
+                    </div>
                 </div>
-                   
-                }
-                   
-            </article>
+
+</article>
 
             </div>
 

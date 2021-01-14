@@ -49,11 +49,21 @@
 
             @if (TempData["user"] == null)
             {
-                <a asp-controller="Users" asp-action="Login" class="notinverysmall">התחבר</a><br>
+                <a style="        border-radius: 20px;
+        background-color: transparent;
+        border: solid 1px rgb(96, 57, 19);
+        margin-left: 31px;
+        padding-left: 15px;
+        padding-right: 15px" asp-controller="Users" asp-action="Login" class="notinverysmall">  התחבר  </a><br>
             }
             else
             {
-                <a asp-controller="Users" asp-action="LogOut" class="notinverysmall">התנתק</a>
+                <a style="        border-radius: 20px;
+        background-color: transparent;
+        border: solid 1px rgb(96, 57, 19);
+        margin-left: 31px;
+        padding-left: 15px;
+        padding-right: 15px" asp-controller="Users" asp-action="LogOut" class="notinverysmall">התנתק</a>
             }
             </footer>
         <!-- Optional JavaScript -->
