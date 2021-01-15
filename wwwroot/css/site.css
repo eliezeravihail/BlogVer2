@@ -134,7 +134,7 @@ h2 {
     align-content: center;
     font-family: 'Heebo', sans-serif;
     font-weight: bold !important;
-    font-size: 25pt !important;
+    font-size: 25pt ;
     margin-top: 30px;
     margin-bottom: 10px;
 }
@@ -156,7 +156,7 @@ h3 {
     color: rgb(0, 0, 0) !important;
     font-family: 'Heebo', sans-serif !important;
     font-weight: 400 !important;
-    font-size: 13pt !important;
+    font-size: 13pt ;
     margin-top: 0px !important;
 }
 
@@ -223,13 +223,24 @@ button, input, optgroup, select, textarea {
     #backMain {
         max-width: 120vh;
     }
+    h1 {
+        font-size: 35pt;
+    }
+    h2 {
+        font-size: 20pt;
+    }
 }
 
 @media only screen and (max-width: 415px) {
     .notinverysmall {
         display: none;
     }
-
+    h1 {
+        font-size: 25pt;
+    }
+    h2 {
+        font-size: 15pt;
+    }
     article {
         padding: 2ch;
     }
