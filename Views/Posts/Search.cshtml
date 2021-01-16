@@ -13,7 +13,7 @@
         if (TempData["user"] != null)
         {
 
-          
+
             <hr>
             @Html.DisplayFor(modelItem => item.PublishDate)
             <html>
@@ -37,6 +37,10 @@
 //@Html.Raw(item.BodyText)
 <br>
 }
+    @if (ViewData["not found"] == "not found")
+    {
+        <h1> אין תוצאות מתאימות</h1>
+    }
 </article>
 
 
