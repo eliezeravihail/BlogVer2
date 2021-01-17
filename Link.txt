@@ -1,4 +1,4 @@
-https://github.com/eliezeravihail/BlogVer2/settings
+https://github.com/eliezeravihail/BlogVer2
 
 סקריפטים של SQL ליצור דאטא לפני הרצה ראשונה נמצאים בתקיה בשם SqlSecript בפרויקט 
 נא ליצור DB ולהריצם לפני הרצת הפרוייקט
