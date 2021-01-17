@@ -9,8 +9,8 @@
         Post item = Model.Last<Post>();// ElementAt<Post>(Model.Count<Post>() - 1);
         <div class="p">
             <h1>הבלוג הטכני</h1>
-            <h2>@item.Title</h2>
             <article>
+            <h2>@item.Title</h2>
                 <p>@Html.Raw(item.BodyText)</p>
             </article>
             <hr>
