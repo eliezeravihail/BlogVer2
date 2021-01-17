@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "כל הפוסטים";
 }
-
 <h1>פוסטים קיימים</h1>
 <article>
     @foreach (var item in Model.Reverse<Post>())
@@ -13,6 +12,7 @@
         <html>
         |
     </html>
+
     <a asp-action="Edit" asp-route-id="@item.Id">ערוך</a>
     <html>
     |
@@ -30,6 +30,7 @@
 @Html.Raw(item.BodyText)
 
 <br>
-}
+    }
 </article>
+    
 
