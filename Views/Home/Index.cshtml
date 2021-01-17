@@ -13,7 +13,7 @@
             
 
               <article>
-                  <div id="carouselIndicators" data-interval="false" class="carousel slide" data-ride="carousel" style="height:500px; background-color:black; margin-top:50px">
+                  <div id="carouselIndicators" data-interval="false" class="carousel slide" data-ride="carousel" style="height:500px; background-color:black; margin-top:50px; opacity:0.3">
                       <ol class="carousel-indicators">
                           @for (int i = 0; i < Model.Count(); i++)
                           {
@@ -29,6 +29,7 @@
                           {
                               @if (i == 0)
                               {
+                                  <!-- change this item  לשנות את האלמנט הזה-->
                                   <div class="carousel-item active">
                                       <div class="carousel-caption d-none d-md-block" style="position:static">
                                           <h5>@Model.ElementAt(i).Title</h5>
@@ -36,7 +37,7 @@
                                       </div>
                                   </div>
                               }
-
+                              <!-- change this item accordingly ולשנות את זה בהתאם-->
                               <div class="carousel-item">
                                   <div class="carousel-caption d-none d-md-block" style="position:static">
                                       <h5>@Model.ElementAt(i).Title</h5>
@@ -44,7 +45,7 @@
                                   </div>
                               </div>
                           }
-                         
+
 
 
                       </div>
