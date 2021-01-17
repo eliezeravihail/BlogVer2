@@ -29,14 +29,13 @@
         </nav>
         <div class="menu notinverysmall">
             <div class="p">
-                ענן תגיות
-                <div class="searchBox">
+                    <div class="searchBox">
                     @using (@Html.BeginForm())
                     {
                         @Html.TextBox("search")
                         <input class="searchBox" type="submit" value="חיפוש" asp-controller="Posts" asp-action="Search" name="searcher" />
-                        <input class="searchBox" type="submit" value="פוסטים ישנים" asp-controller="Posts" asp-action="OldPost" name="OldPost" />
-                        <input class="searchBox" type="submit" value="פוסטים  חדשים" asp-controller="Posts" asp-action="OldPost" name="OldPost" />
+                        @*<input class="searchBox" type="submit" value="פוסטים ישנים" asp-controller="Posts" asp-action="OldPost" name="OldPost" />
+                        <input class="searchBox" type="submit" value="פוסטים  חדשים" asp-controller="Posts" asp-action="OldPost" name="OldPost" />*@
                     }
                 </div>
             </div>
@@ -46,26 +45,18 @@
             @RenderBody()
         </div>
         <footer class="searchBox">
+            <div class="menu notinverysmall">
 
-            @if (TempData["user"] == null)
-            {
-                <a style="        border-radius: 20px;
-        background-color: transparent;
-        border: solid 1px rgb(96, 57, 19);
-        margin-left: 31px;
-        padding-left: 15px;
-        padding-right: 15px" asp-controller="Users" asp-action="Login" class="notinverysmall">  התחבר  </a><br>
-            }
-            else
-            {
-                <a style="        border-radius: 20px;
-        background-color: transparent;
-        border: solid 1px rgb(96, 57, 19);
-        margin-left: 31px;
-        padding-left: 15px;
-        padding-right: 15px" asp-controller="Users" asp-action="LogOut" class="notinverysmall">התנתק</a>
-            }
-            </footer>
+                @if (TempData["user"] == null)
+                {
+                    <a class="searchBox notinverysmall" asp-controller="Users" asp-action="Login" class="notinverysmall">התחבר</a><br>
+                }
+                else
+                {
+                    <a class="searchBox notinverysmall" asp-controller="Users" asp-action="LogOut" class="notinverysmall">התנתק</a>
+                }
+                </div>
+        </footer>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

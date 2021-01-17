@@ -6,7 +6,7 @@
 
 <h1>פוסטים קיימים</h1>
 <article>
-    @foreach (var item in Model)
+    @foreach (var item in Model.Reverse<Post>())
     {
         <hr>
         @Html.DisplayFor(modelItem => item.PublishDate)
