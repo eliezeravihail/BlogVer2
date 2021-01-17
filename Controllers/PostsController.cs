@@ -235,7 +235,11 @@ namespace BlogVer2.Controllers
                 search = "";
             }
             var allFinded = from Post in _context.Post where Post.Title.Contains(search) || Post.BodyText.Contains(search) select Post;
-
+            int o = allFinded.Count();
+            if(o==0)
+            {
+                ViewData["not found"] = "not found";
+            }
             if (HttpContext.Session.GetString("user") != null)
             {
 
