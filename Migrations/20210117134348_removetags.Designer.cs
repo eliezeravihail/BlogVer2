@@ -4,14 +4,16 @@ using BlogVer2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BlogVer2.Migrations
 {
     [DbContext(typeof(BlogVer2Context))]
-    partial class BlogVer2ContextModelSnapshot : ModelSnapshot
+    [Migration("20210117134348_removetags")]
+    partial class removetags
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

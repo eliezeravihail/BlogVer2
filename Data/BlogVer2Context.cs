@@ -17,8 +17,6 @@ namespace BlogVer2.Data
 
         public DbSet<BlogVer2.Post> Post { get; set; }
 
-        public DbSet<BlogVer2.Tag> Tag { get; set; }
-
         public DbSet<BlogVer2.User> User { get; set; }
 
         public DbSet<BlogVer2.Models.Message> Message { get; set; }

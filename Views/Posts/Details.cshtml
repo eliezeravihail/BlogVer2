@@ -1,40 +1,27 @@
 ﻿@model BlogVer2.Post
 
 @{
-    ViewData["Title"] = "מידע על פוסט";
+    ViewData["Title"] = "פוסט נבחר";
 }
 
-<h1>מידע על פוסט</h1>
+<h1>@Model.Title</h1>
 
-<article>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PublishDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PublishDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.BodyText)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.BodyText)
-        </dd>
-    </dl>
-</article>
+<article class="p">
+    <hr/>
+   <div>
+    @Html.DisplayNameFor(model => model.PublishDate) : 
+    @Html.DisplayFor(model => model.PublishDate)
+   </div>
+   <div>
+       @Html.Raw(Model.BodyText)
+   </div>
+<div>
 @if (ViewData["user"] != null)
 {
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>}
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> <html>|</html>}
+    <a asp-action="Index">רשימת הפוסטים</a>
+</div>
+</article>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
