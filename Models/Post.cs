@@ -18,9 +18,7 @@ namespace BlogVer2
         [Required]
         [DisplayName("כותרת")]
         public string Title { get; set; }
-        
-        public ICollection<Tag> Tags{ get; set; }
-                
+                        
         [Required]
         [DisplayName("גוף הפוסט")]
         public string BodyText { get; set; } // with HTML tags
