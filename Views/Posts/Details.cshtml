@@ -7,20 +7,24 @@
 <h1>@Model.Title</h1>
 
 <article class="p">
+    <br>
+    <div>
+        @Html.DisplayNameFor(model => model.PublishDate) :
+        @Html.DisplayFor(model => model.PublishDate)
+    </div>
     <hr/>
-   <div>
-    @Html.DisplayNameFor(model => model.PublishDate) : 
-    @Html.DisplayFor(model => model.PublishDate)
-   </div>
-   <div>
-       @Html.Raw(Model.BodyText)
-   </div>
-<div>
-@if (ViewData["user"] != null)
-{
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> <html>|</html>}
-    <a asp-action="Index">רשימת הפוסטים</a>
-</div>
+    <div>
+        @Html.Raw(Model.BodyText)
+    </div>
+    <div>
+        @if (ViewData["user"] != null)
+        {
+         <a asp-action="Edit" asp-route-id="@Model.Id">ערוך</a>
+         <html>|</html>
+        }
+        <br>
+        <a asp-action="Index">רשימת הפוסטים</a>
+    </div>
 </article>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
