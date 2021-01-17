@@ -1,7 +1,10 @@
 ﻿* {
     box-sizing: border-box;
 }
-
+.line {
+    z-index:100;
+    position:absolute;
+}
 body {
     /* =========================================================================
 This pattern is downloaded from www.toptal.com/designers/subtlepatterns/ 
@@ -262,6 +265,26 @@ button, input, optgroup, select, textarea {
         height:100%
     }
 
+    
+
+}
+
+@media only screen and (max-width: 280px) {
+    h1 {
+        font-size: 20pt;
+    }
+
+    .inLine {
+        font-size: 12pt;
+        margin:auto;
+        margin-right:2px;
+        padding-left:10px;
+        padding-right:10px;
+    }
+    nav{
+        height:auto;
+        margin-top:0;
+    }
     
 
 }
