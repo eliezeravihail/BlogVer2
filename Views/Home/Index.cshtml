@@ -21,7 +21,11 @@
                               {
                                   <li data-target="#carouselExampleIndicators" data-slide-to="@i" class="active"></li>
                               }
-                              <li data-target="#carouselExampleIndicators" data-slide-to="@i"></li>
+                              else
+                              {
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="@i"></li>
+                              }
+
                           }
                       </ol>
                       <div class="carousel-inner">
@@ -37,13 +41,17 @@
                                       </div>
                                   </div>
                               }
-                              <!-- change this item accordingly ולשנות את זה בהתאם-->
-                              <div class="carousel-item">
-                                  <div class="carousel-caption d-none d-md-block" style="position:static">
-                                      <h5>@Model.ElementAt(i).Title</h5>
-                                      <p>@Model.ElementAt(i).BodyText</p>
+                              else
+                              {
+                                  <!-- change this item accordingly ולשנות את זה בהתאם-->
+                                  <div class="carousel-item">
+                                      <div class="carousel-caption d-none d-md-block" style="position:static">
+                                          <h5>@Model.ElementAt(i).Title</h5>
+                                          <p>@Model.ElementAt(i).BodyText</p>
+                                      </div>
                                   </div>
-                              </div>
+                              }
+
                           }
 
 
