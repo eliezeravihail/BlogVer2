@@ -25,9 +25,10 @@ namespace BlogVer2.Controllers
             {
 
                 TempData["user"] = "userin";
-                return View(await _context.Post.ToListAsync());
+                
             }
-           else return RedirectToAction("index", "home");
+            return View(await _context.Post.ToListAsync());
+
         }
 
         // GET: Posts/Details/5

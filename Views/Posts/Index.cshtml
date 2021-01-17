@@ -4,32 +4,37 @@
     ViewData["Title"] = "כל הפוסטים";
 }
 <h1>פוסטים קיימים</h1>
+
 <article>
     @foreach (var item in Model.Reverse<Post>())
     {
-        <hr>
-        @Html.DisplayFor(modelItem => item.PublishDate)
+        @if (TempData["user"] == "userin")
+        {
+            <hr>
+            @Html.DisplayFor(modelItem => item.PublishDate)
+            <html>
+            |
+        </html>
+
+        <a asp-action="Edit" asp-route-id="@item.Id">ערוך</a>
         <html>
         |
     </html>
 
-    <a asp-action="Edit" asp-route-id="@item.Id">ערוך</a>
+    <a asp-action="Details" asp-route-id="@item.Id">ראה פרטים</a>
     <html>
     |
 </html>
+<a asp-action="Delete" asp-route-id="@item.Id">מחק </a><hr>}
+        <h3>
+            <a asp-action="Details" asp-route-id="@item.Id">  @Html.DisplayFor(modelItem => item.Title)</a>
 
-<a asp-action="Details" asp-route-id="@item.Id">ראה פרטים</a>
-<html>
- |
-</html>
-<a asp-action="Delete" asp-route-id="@item.Id">מחק </a><hr>
-<h3>
-    @Html.DisplayFor(modelItem => item.Title)
-</h3>
+        </h3>
 
-@Html.Raw(item.BodyText)
+        @if (TempData["user"] == "userin") {
+            @Html.Raw(item.BodyText)}
 
-<br>
+        <br>
     }
 </article>
     
