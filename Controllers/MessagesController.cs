@@ -23,6 +23,10 @@ namespace BlogVer2.Controllers
         // GET: Messages
         public async Task<IActionResult> Index()
         {
+            if (HttpContext.Session.GetString("user") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             return View(await _context.Message.ToListAsync());
         }
 
@@ -36,6 +40,11 @@ namespace BlogVer2.Controllers
             if (id == null)
             {
                 return NotFound();
+            }
+            if (HttpContext.Session.GetString("user") != null)
+            {
+
+                TempData["user"] = "userin";
             }
 
             var message = await _context.Message
@@ -67,10 +76,7 @@ namespace BlogVer2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,content,mail")] Message message)
         {
-            if (HttpContext.Session.GetString("user") == null)
-            {
-                return RedirectToAction("Login", "Users");
-            }
+            
             if (ModelState.IsValid)
             {
                 _context.Add(message);
@@ -87,6 +93,8 @@ namespace BlogVer2.Controllers
             {
                 return RedirectToAction("Login", "Users");
             }
+            TempData["user"] = "userin";
+            
             if (id == null)
             {
                 return NotFound();

@@ -38,7 +38,7 @@
                         {
                             <!-- change this item  לשנות את האלמנט הזה-->
                             <div class="carousel-item active">
-                                <div class="carousel-caption d-none d-md-block" style="position:static">
+                                <div class="carousel-caption d-md-block" style="position:static">
                                     <a style="color:white" asp-controller="Posts" asp-action="Details" asp-route-id="@Model.ElementAt(Model.Count()-1-i).Id">@Model.ElementAt(Model.Count()-1-i).Title</a>
                                     @*<p style="overflow:hidden">@Html.Raw(Model.ElementAt(i).BodyText)</p>*@
                                 </div>
@@ -48,7 +48,7 @@
                         {
                             <!--עכשיו בתגית A אתה יכול לעבור זה לינק-->
                             <div class="carousel-item">
-                                <div class="carousel-caption d-none d-md-block" style="position:static">
+                                <div class="carousel-caption  d-md-block" style="position:static">
                                     <a  style="color:white" asp-controller="Posts" asp-action="Details" asp-route-id="@Model.ElementAt(Model.Count()-1-i).Id">@Model.ElementAt(Model.Count()-1-i).Title</a>
                                     @*@<p style="overflow:hidden">@Html.Raw(Model.ElementAt(i).BodyText)</p>*@
                                 </div>
